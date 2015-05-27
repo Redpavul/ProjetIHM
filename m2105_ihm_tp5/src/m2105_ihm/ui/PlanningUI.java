@@ -12,19 +12,22 @@ import m2105_ihm.nf.Evenement;
  *
  * @author IUT2
  */
-public class PlanningUI extends JPanel {
+public class PlanningUI extends JPanel
+{
     /** 
      * Constructeur : initialise les composants de l'IHM pour les événements
      * @param une instance du controleur
      */
-    public PlanningUI(Controleur ctrl) {
+    public PlanningUI(Controleur ctrl)
+    {
         super();
     }
     
     /*
      * Retourne l'événement sélectionné
      */
-    public Evenement getSelectedEvt() {        
+    public Evenement getSelectedEvt()
+    {        
         return null;
     }
 
@@ -33,7 +36,8 @@ public class PlanningUI extends JPanel {
      * @param title texte affiché dans la liste pour un contact
      * @param Contact objet contact associé
      */
-    public boolean ajouterEvt(Evenement evt) {
+    public boolean ajouterEvt(Evenement evt)
+    {
         return true;
     }    
 }
