@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import m2105_ihm.nf.Contact;
+import m2105_ihm.nf.Evenement;
 import m2105_ihm.nf.GroupeContacts;
 
 /**
@@ -94,5 +95,25 @@ public class BoiteDialogUI {
         }
         
         return res;
-    }    
+    }
+    
+    public static Evenement afficherChoixEvenement(JFrame fenetre, String titre, Evenement [] e) {
+        Evenement res = null;
+        if (titre == null) { titre = ""; }
+        JComboBox combo = new JComboBox(e);
+                        if (e != null) {
+           
+            
+            
+             Object selectedValue =  JOptionPane.showInputDialog(fenetre, "Quel evenement voulez vous supprimer : ", " ", JOptionPane.QUESTION_MESSAGE, null , e, 1);
+      
+            
+            res = ((Evenement) selectedValue);
+           
+                      
+        }
+        
+        return res;
+    }
+    
 }
