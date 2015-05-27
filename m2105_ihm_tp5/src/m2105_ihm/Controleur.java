@@ -161,6 +161,7 @@ public class Controleur {
      */
     public void supprimerEvenement() {
        
+        Evenement[] e = nf.getEvenements();
         
         
        
