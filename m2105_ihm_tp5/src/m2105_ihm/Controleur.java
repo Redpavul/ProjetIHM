@@ -161,12 +161,6 @@ public class Controleur {
      */
     public void supprimerEvenement() {
        
-       /** Contact c = carnetUI.getSelectedContact();
-        BoiteDialogUI boiteDialogUI = new BoiteDialogUI();
-        if( boiteDialogUI.afficherConfirmation(fenetre,c)==true){
-            carnetUI.retirerContact(c);
-            nf.removeContact(c);
-        } **/
         
         
        
