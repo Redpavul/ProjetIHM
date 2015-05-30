@@ -3,6 +3,8 @@
  */
 package m2105_ihm.ui;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 import m2105_ihm.Controleur;
@@ -14,6 +16,12 @@ import m2105_ihm.nf.Evenement;
  */
 public class PlanningUI extends JPanel
 {
+	
+	private Controleur controleur;
+	
+	
+	private FicheEvtUI ficheEvtUI;
+	
     /** 
      * Constructeur : initialise les composants de l'IHM pour les événements
      * @param une instance du controleur
@@ -21,9 +29,27 @@ public class PlanningUI extends JPanel
     public PlanningUI(Controleur ctrl)
     {
         super();
+        this.controleur = controleur;
+        
+        initUIComponents(); 
+        
     }
     
-    /*
+    
+
+    private void initUIComponents()
+	{
+		
+    	
+    	ficheEvtUI = new FicheEvtUI(this);
+    	
+    	setLayout(new BorderLayout());
+    	add(ficheEvtUI,BorderLayout.CENTER);
+	}
+
+
+
+	/*
      * Retourne l'événement sélectionné
      */
     public Evenement getSelectedEvt()
@@ -38,6 +64,7 @@ public class PlanningUI extends JPanel
      */
     public boolean ajouterEvt(Evenement evt)
     {
+    	
         return true;
     }    
 }

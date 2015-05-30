@@ -3,6 +3,8 @@
  */
 package m2105_ihm.ui;
 
+import javax.swing.JLabel;
+
 import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
@@ -44,7 +46,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */    
     private void initUIComponents() {
         
-        /** Projet : à compléter **/    
+        this.add(new JLabel("Piou"));  
   
     }
 
