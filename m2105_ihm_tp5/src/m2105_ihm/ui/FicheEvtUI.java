@@ -46,7 +46,7 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */    
     private void initUIComponents() {
         
-        this.add(new JLabel("Piou"));  
+        //this.add(new JLabel("Piou"));  
   
     }
 

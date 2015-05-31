@@ -135,7 +135,7 @@ public class ListeContacts extends javax.swing.JPanel  {
         treeUI.setExpandedIcon(null);
 
         listeDefilante = new JScrollPane();
-	listeDefilante.getViewport().add(listeContacts);
+        listeDefilante.getViewport().add(listeContacts);
         
         setLayout(new BorderLayout());
         add(listeDefilante, BorderLayout.CENTER);        

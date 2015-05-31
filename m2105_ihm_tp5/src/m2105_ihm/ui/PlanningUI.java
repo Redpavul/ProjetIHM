@@ -5,10 +5,13 @@ package m2105_ihm.ui;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import m2105_ihm.Controleur;
+import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
+import m2105_ihm.nf.GroupeContacts;
 
 /**
  *
@@ -18,6 +21,8 @@ public class PlanningUI extends JPanel
 {
 	
 	private Controleur controleur;
+	
+	private ListeEvenement listeEvenement ;
 	
 	
 	private FicheEvtUI ficheEvtUI;
@@ -40,10 +45,12 @@ public class PlanningUI extends JPanel
     private void initUIComponents()
 	{
 		
-    	
+    	listeEvenement = new ListeEvenement(this);
+        listeEvenement.setBorder(BorderFactory.createTitledBorder("Evenement"));
     	ficheEvtUI = new FicheEvtUI(this);
     	
     	setLayout(new BorderLayout());
+    	add(listeEvenement, BorderLayout.WEST);
     	add(ficheEvtUI,BorderLayout.CENTER);
 	}
 
@@ -66,5 +73,18 @@ public class PlanningUI extends JPanel
     {
     	
         return true;
-    }    
+    }
+    
+    
+    public void setSelectedItem(Object item) {
+        if (item == null) {
+            //fiches.show(cardPanel,"vide");
+        } else {
+            if (item instanceof Evenement) {
+                controleur.setEvtSelected(true);
+                //ficheContact.setValues((Contact) item); // affiche les données du contact                 
+                //fiches.show(cardPanel,"contact");                
+            } 
+        }
+    }
 }
