@@ -72,7 +72,7 @@ public class PlanningUI extends JPanel
     public boolean ajouterEvt(Evenement evt)
     {
     	
-        return true;
+        return listeEvenement.ajouterEvenement(evt);
     }
     
     
@@ -81,7 +81,7 @@ public class PlanningUI extends JPanel
             //fiches.show(cardPanel,"vide");
         } else {
             if (item instanceof Evenement) {
-                controleur.setEvtSelected(true);
+                //controleur.setEvtSelected(true);
                 //ficheContact.setValues((Contact) item); // affiche les données du contact                 
                 //fiches.show(cardPanel,"contact");                
             } 

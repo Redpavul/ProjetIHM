@@ -3,7 +3,9 @@
  */
 package m2105_ihm.ui;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.Contact;
@@ -19,6 +21,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
      * Attributs
      */
     private PlanningUI          planning;
+    
+    
+    private JTextField champNom;  
+    private JTextField champjour,champan;
+    
+
     
     /**
      * Creates new form CarnetUI
@@ -46,7 +54,10 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */    
     private void initUIComponents() {
         
-        //this.add(new JLabel("Piou"));  
+        //this.add(new JLabel("Piou"));
+    	this.add(new JLabel("Nom de l'évenement : "));
+    	champNom = new JTextField(13);
+    	this.add(champNom);
   
     }
 

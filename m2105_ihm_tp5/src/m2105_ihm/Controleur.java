@@ -5,9 +5,13 @@ package m2105_ihm;
 
 import javax.swing.JFrame;
 import m2105_ihm.nf.Contact;
+import m2105_ihm.nf.DispoSortie;
 import m2105_ihm.nf.GroupeContacts;
+import m2105_ihm.nf.Hobby;
+import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.NoyauFonctionnel;
 import m2105_ihm.nf.Evenement;
+import m2105_ihm.nf.Region;
 
 import m2105_ihm.ui.CarnetUI;
 import m2105_ihm.ui.FenetreUI;
@@ -36,8 +40,12 @@ public class Controleur {
      * Constructeur de la fenêtre principale
      */
     public Controleur() {
-        initUI();
+    	
+    	initUI();
+    	
         initContent();
+        
+        
     }
     
     /**
@@ -220,7 +228,6 @@ public class Controleur {
      */
     private void initContent() {
         nf = new NoyauFonctionnel();
-                
         for(Contact c : nf.getContacts()) {
             carnetUI.ajouterContact(c);
         }
@@ -243,5 +250,7 @@ public class Controleur {
     
     public void setEvtSelected(boolean selected) {
         fenetre.setMenuEvenementSelected(selected);
-    }    
+    } 
+    
+    
 }
