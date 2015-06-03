@@ -3,9 +3,13 @@
  */
 package m2105_ihm.ui;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.Contact;
@@ -25,7 +29,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
     
     private JTextField champNom;  
     private JTextField champjour,champan;
-    
+    private JComboBox listmois;
+    private JButton valider = new JButton("Valider");
+    private JButton annuler= new JButton("Annuler");
+    JTable nomsTable;
+    JList symbList;
+    DefaultTableModel model;
 
     
     /**

@@ -297,4 +297,19 @@ public class NoyauFonctionnel {
         
         return success;
     }
+    
+    
+    public GroupeContacts getGroupeString(String str)
+    {
+    
+    	for ( GroupeContacts i : groupes)
+    	{
+    		if (i.getNom()==str)
+    		{
+    			return i;
+    		}
+    	}
+    	
+    	return null;
+    }
 }

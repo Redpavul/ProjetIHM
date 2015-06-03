@@ -74,7 +74,7 @@ public class FicheContactUI extends JPanel
         
 
         this.add(new JLabel("Nom :"));
-	champNom = new JTextField(13);
+        champNom = new JTextField(13);
         this.add(champNom);
         
 	this.add(new JLabel("Préférences sorties : "));

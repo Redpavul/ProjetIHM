@@ -112,23 +112,44 @@ public class Controleur {
         
         GroupeContacts[] g = nf.getGroupesContact(c);
         GroupeContacts[] gc = nf.getGroupes();
+        
         int a = gc.length-g.length;
-        if(a>0)
+        int b = 0 ;	// temporaire à incrémenter dans la boucle
+        
+        GroupeContacts[] gtmp = new GroupeContacts[a];
+        
+        if(a>0 && g.length!=0)
         {
-	        GroupeContacts[] gt = new GroupeContacts[a];
-	        int b = 0 ;
+	        
 	        for( GroupeContacts i : g)
 	        {
 	        	for( GroupeContacts j : gc)
 	        	{
 	        		if(i!=j)
 	        		{
-	        			gt[b]=j;
+	        			System.out.println(j);
+	        			gtmp[b]=j;
 	        			b++;
 	        		}
 	        	}
 	        }
-	        GroupeContacts gr = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gt);
+	
+	        GroupeContacts gr = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gtmp);
+	        
+	        if (gr!=null)
+	        {
+	        	gr.addContact(c);
+	        }
+        }
+        else if(g.length==0)
+        {
+        	for( GroupeContacts j : gc)
+        	{       			
+        		gtmp[b]=j;
+        		b++;        		
+        	}
+        	
+        	GroupeContacts gr = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gtmp);
 	        
 	        if (gr!=null)
 	        {
@@ -250,7 +271,17 @@ public class Controleur {
     
     public void setEvtSelected(boolean selected) {
         fenetre.setMenuEvenementSelected(selected);
-    } 
+    }
+
+	public NoyauFonctionnel getNf()
+	{
+		return nf;
+	}
+
+	public void setNf(NoyauFonctionnel nf)
+	{
+		this.nf = nf;
+	} 
     
     
 }

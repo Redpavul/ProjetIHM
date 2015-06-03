@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 import m2105_ihm.nf.GroupeContacts;
+import m2105_ihm.nf.NoyauFonctionnel;
 
 /**
  *
@@ -23,6 +24,9 @@ public class BoiteDialogUI {
      * @param c un contact
      * @return vrai si confirmé
      */
+	NoyauFonctionnel nf = ;
+	
+	
     public static boolean afficherConfirmation(JFrame fenetre, Contact c) {
         boolean res = false;
 
@@ -79,17 +83,24 @@ public class BoiteDialogUI {
      * @return groupe choisi sinon valeur null
      */    
     public static GroupeContacts afficherChoixMembreContact(JFrame fenetre, String titre, GroupeContacts [] groupes) {
-        GroupeContacts res = null;
+        String [] test = new String [groupes.length];
+    	
+    	GroupeContacts res = null;
+    	for ( int i=0; i<groupes.length;i++)
+    	{
+    		
+    		test[i] = groupes[i].getNom();
+
+    	}
+    	
         if (titre == null) { titre = ""; }
-        JComboBox combo = new JComboBox(groupes);
                         if (groupes != null) {
            
             
             
-             Object selectedValue =  JOptionPane.showInputDialog(fenetre, "Dans quel groupe voulez vous ajoutez le contact : ", " ", JOptionPane.QUESTION_MESSAGE, null , groupes, 1);
+             Object selectedValue =  JOptionPane.showInputDialog(fenetre, "Dans quel groupe voulez vous ajoutez le contact : ", " ", JOptionPane.QUESTION_MESSAGE, null  ,test, 1);
       
-            
-            res = ((GroupeContacts) selectedValue);
+            res = ;
            
                       
         }
