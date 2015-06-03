@@ -107,19 +107,51 @@ public class BoiteDialogUI {
 
 	return res;
     }
+    
+     public static Contact afficherChoixMembreContact(JFrame fenetre, String titre, Contact[] contacts) {
+	String[] nomContacts = new String[contacts.length];
+	
+	Contact res = null;
+	for (int i = 0; i < contacts.length; i++)
+	{
+	   
+	    nomContacts[i] = contacts[i].getNom();
+	}
 
-    public static Evenement afficherChoixEvenement(JFrame fenetre, String titre, Evenement[] e) {
-	Evenement res = null;
 	if (titre == null) {
 	    titre = "";
 	}
-	JComboBox combo = new JComboBox(e);
+	if (contacts != null) {
+
+	    Object selectedValue = JOptionPane.showInputDialog(fenetre, "Dans quel groupe voulez vous ajoutez le contact : ", " ", JOptionPane.QUESTION_MESSAGE, null, nomContacts, 1);
+
+	    for (int i = 0; i < contacts.length; i++) {
+		if (nomContacts[i] == selectedValue) {
+		    res = contacts[i];
+		}
+	    }
+	}
+
+	return res;
+    }
+
+    public static boolean afficherConfirmation(JFrame fenetre, Evenement e) {
+		boolean res = false;
+
 	if (e != null) {
+	    String[] choix = new String[]{"Supprimer", "Annuler"};
 
-	    Object selectedValue = JOptionPane.showInputDialog(fenetre, "Quel evenement voulez vous supprimer : ", " ", JOptionPane.QUESTION_MESSAGE, null, e, 1);
+	    Object selectedValue = JOptionPane.showOptionDialog(fenetre,
+		    "Voulez-vous vraiment supprimer l'événement : "
+		    + e.getIntitule() + " ?",
+		    "Suppression de l'événement",
+		    JOptionPane.DEFAULT_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,
+		    choix,
+		    choix[1]);
 
-	    res = ((Evenement) selectedValue);
-
+	    res = (((Integer) selectedValue) == 0);
 	}
 
 	return res;

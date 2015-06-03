@@ -189,6 +189,7 @@ public class FenetreUI extends JFrame {
     {
         
         JMenu menu = new JMenu("Év\u00E9nements");
+	
 	menuEvenements[0] = new JMenuItem("Créer un événement");
 	menuEvenements[0].addActionListener(new ActionListener(){
 
@@ -197,6 +198,7 @@ public class FenetreUI extends JFrame {
 	});
 	menu.add(menuEvenements[0]);
 	
+////////////////////////////////////////////////////////////////////////////////
 	menuEvenements[1] = new JMenuItem("Supprimer un événement");
 	menuEvenements[1].addActionListener(new ActionListener(){
 
@@ -204,6 +206,8 @@ public class FenetreUI extends JFrame {
 	    public void actionPerformed(ActionEvent e) {controleur.supprimerEvenement();}
 	});
 	menu.add(menuEvenements[1]);
+////////////////////////////////////////////////////////////////////////////////
+
 	menuEvenements[2] = new JMenuItem("Ajouter un participant");
 	menuEvenements[2].addActionListener(new ActionListener(){
 
@@ -211,6 +215,8 @@ public class FenetreUI extends JFrame {
 	    public void actionPerformed(ActionEvent e) {controleur.ajouterParticipantEvenement();}
 	});
 	menu.add(menuEvenements[2]);
+////////////////////////////////////////////////////////////////////////////////
+
 	menuEvenements[3] = new JMenuItem("Supprimer un participant");
 	menuEvenements[3].addActionListener(new ActionListener(){
 
@@ -218,6 +224,8 @@ public class FenetreUI extends JFrame {
 	    public void actionPerformed(ActionEvent e) {controleur.retirerParticipantEvenement();}
 	});
 	menu.add(menuEvenements[3]);
+////////////////////////////////////////////////////////////////////////////////
+
 	return menu;
     }    
     
@@ -331,7 +339,7 @@ public class FenetreUI extends JFrame {
                 break;
                 
             case MENU_EVENEMENTS:
-                if ((menuEvenements != null) && (index >= 0) && (index < menuEvenements.length)) {
+                if ((index >= 0) &&  (index < menuEvenements.length)) {
                     if (menuEvenements[index] != null) {
                         menuEvenements[index].setEnabled(enabled);
                     }

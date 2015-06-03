@@ -34,7 +34,7 @@ public class PlanningUI extends JPanel
     public PlanningUI(Controleur ctrl)
     {
         super();
-        this.controleur = controleur;
+        this.controleur = ctrl;
         
         initUIComponents(); 
         
@@ -61,7 +61,7 @@ public class PlanningUI extends JPanel
      */
     public Evenement getSelectedEvt()
     {        
-        return null;
+        return listeEvenement.getSelectedEvenement();
     }
 
     /**
@@ -75,15 +75,19 @@ public class PlanningUI extends JPanel
         return listeEvenement.ajouterEvenement(evt);
     }
     
+    public boolean retirerEvt(Evenement evt)
+    {
+    	
+        return listeEvenement.retirerEvenement(evt);
+    }
+    
     
     public void setSelectedItem(Object item) {
-        if (item == null) {
-            //fiches.show(cardPanel,"vide");
-        } else {
+        if (item == null) {} 
+	else {
             if (item instanceof Evenement) {
-                //controleur.setEvtSelected(true);
-                //ficheContact.setValues((Contact) item); // affiche les données du contact                 
-                //fiches.show(cardPanel,"contact");                
+                controleur.setEvtSelected(true);
+                //ficheContact.setValues((Contact) item); // affiche les données du contact                                
             } 
         }
     }

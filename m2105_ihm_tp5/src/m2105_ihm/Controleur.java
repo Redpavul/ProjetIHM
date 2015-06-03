@@ -18,10 +18,6 @@ import m2105_ihm.ui.FenetreUI;
 import m2105_ihm.ui.PlanningUI;
 import m2105_ihm.ui.BoiteDialogUI;
 
-/**
- *
- * @author IUT2
- */
 public class Controleur {
     
     /*
@@ -102,8 +98,6 @@ public class Controleur {
         
         
     }
-    
-    
     
     public void ajouterContactGroupe() 
     {
@@ -190,7 +184,13 @@ public class Controleur {
      */
     public void supprimerEvenement() {
        
-        Evenement[] e = nf.getEvenements();
+        Evenement e = planningUI.getSelectedEvt();
+        BoiteDialogUI boiteDialogUI = new BoiteDialogUI();
+        if( boiteDialogUI.afficherConfirmation(fenetre,e))
+        {
+            planningUI.retirerEvt(e);
+            nf.removeEvenement(e);
+        }
         
         
        
@@ -201,10 +201,75 @@ public class Controleur {
      */
     public void ajouterParticipantEvenement()
     {
+	Evenement e = planningUI.getSelectedEvt();
+        BoiteDialogUI boiteDialogUI = new BoiteDialogUI();
+        boolean bool = true;
+	
+        Contact[] contacts = nf.getContacts();
+        Contact[] contactsEvt = e.getParticipants();
+	
+        int a = contacts.length-contactsEvt.length;
+	System.out.println(a);
+        int b = 0 ;	// temporaire à incrémenter dans la boucle
+        
+        Contact[] gtmp = new Contact[a];
+        
+        if(a>0 && contactsEvt.length!=0)
+        {
+	        
+	        for(int i = 0; i < contacts.length; i++)
+	        {
+	        	
+		    
+		    
+		    for(int j = 0; j < contactsEvt.length; j++)
+	        	{
+	        		if(contactsEvt[j]==contacts[i])
+				{
+				    bool = false;
+				}						
+	        	}
+		    if(bool)
+		    {
+			gtmp[b]=contacts[i];
+			b++;
+		    }
+		    
+	        }
+	
+	        Contact c = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gtmp);
+	        
+	        if (c!=null)
+	        {
+	        	e.addParticipant(c);
+	        }
+        }
+        else if(contactsEvt.length==0)
+        {
+        	for( Contact j : contactsEvt)
+        	{       			
+        		gtmp[b]=j;
+        		b++;        		
+        	}
+        	
+
+		Contact c = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gtmp);
+	        
+	        if (c!=null)
+	        {
+	        	e.addParticipant(c);
+	        }
+        }
+        else
+        {
+        	System.out.println("Cette personne appartient déjà tout les groupes");
+        }
     
-       /** Projet **/
-           
+    
     }
+    
+           
+    
 
     /**
      * Retire un participant d'un événement
