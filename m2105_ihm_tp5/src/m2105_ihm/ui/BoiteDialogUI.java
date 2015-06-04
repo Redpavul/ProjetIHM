@@ -108,13 +108,15 @@ public class BoiteDialogUI {
 	return res;
     }
     
-     public static Contact afficherChoixMembreContact(JFrame fenetre, String titre, Contact[] contacts) {
+    
+    
+    public static Contact afficherChoixMembreContact(JFrame fenetre, String titre, Contact[] contacts) {
 	String[] nomContacts = new String[contacts.length];
 	
 	Contact res = null;
 	for (int i = 0; i < contacts.length; i++)
 	{
-	   
+		System.out.println(contacts[i]);
 	    nomContacts[i] = contacts[i].getNom();
 	}
 
@@ -123,7 +125,7 @@ public class BoiteDialogUI {
 	}
 	if (contacts != null) {
 
-	    Object selectedValue = JOptionPane.showInputDialog(fenetre, "Dans quel groupe voulez vous ajoutez le contact : ", " ", JOptionPane.QUESTION_MESSAGE, null, nomContacts, 1);
+	    Object selectedValue = JOptionPane.showInputDialog(fenetre, "Quel contact voulez vous ajouter à cet évenement : ", " ", JOptionPane.QUESTION_MESSAGE, null, nomContacts, 1);
 
 	    for (int i = 0; i < contacts.length; i++) {
 		if (nomContacts[i] == selectedValue) {

@@ -121,7 +121,6 @@ public class Controleur {
 	        	{
 	        		if(i!=j)
 	        		{
-	        			System.out.println(j);
 	        			gtmp[b]=j;
 	        			b++;
 	        		}
@@ -201,7 +200,7 @@ public class Controleur {
      */
     public void ajouterParticipantEvenement()
     {
-	Evenement e = planningUI.getSelectedEvt();
+    	Evenement e = planningUI.getSelectedEvt();
         BoiteDialogUI boiteDialogUI = new BoiteDialogUI();
         boolean bool = true;
 	
@@ -209,7 +208,6 @@ public class Controleur {
         Contact[] contactsEvt = e.getParticipants();
 	
         int a = contacts.length-contactsEvt.length;
-	System.out.println(a);
         int b = 0 ;	// temporaire à incrémenter dans la boucle
         
         Contact[] gtmp = new Contact[a];
@@ -225,18 +223,18 @@ public class Controleur {
 		    for(int j = 0; j < contactsEvt.length; j++)
 	        	{
 	        		if(contactsEvt[j]==contacts[i])
-				{
-				    bool = false;
-				}						
+	        		{
+	        			bool = false;
+	        		}						
 	        	}
 		    if(bool)
 		    {
-			gtmp[b]=contacts[i];
-			b++;
+		    	gtmp[b]=contacts[i];
+		    	b++;
 		    }
 		    
 	        }
-	
+	        
 	        Contact c = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gtmp);
 	        
 	        if (c!=null)
@@ -246,7 +244,8 @@ public class Controleur {
         }
         else if(contactsEvt.length==0)
         {
-        	for( Contact j : contactsEvt)
+        	System.out.println("a");
+        	for( Contact j : contacts)
         	{       			
         		gtmp[b]=j;
         		b++;        		
