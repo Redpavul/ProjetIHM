@@ -3,6 +3,7 @@
  */
 package m2105_ihm;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.DispoSortie;
@@ -66,10 +67,7 @@ public class Controleur {
         if( boiteDialogUI.afficherConfirmation(fenetre,c)==true){
             carnetUI.retirerContact(c);
             nf.removeContact(c);
-        }
-        
-        
-        
+        }       
     }
     
     /**
@@ -95,8 +93,6 @@ public class Controleur {
             carnetUI.retirerGroupe(g);
             nf.removeGroupe(g);
         }
-        
-        
     }
     
     public void ajouterContactGroupe() 
@@ -112,7 +108,7 @@ public class Controleur {
         
         GroupeContacts[] gtmp = new GroupeContacts[a];
         
-        if(a>0 && g.length!=0)
+        if(a > 0 && g.length!=0)
         {
 	        
 	        for( GroupeContacts i : g)
@@ -203,37 +199,58 @@ public class Controleur {
     	Evenement e = planningUI.getSelectedEvt();
         BoiteDialogUI boiteDialogUI = new BoiteDialogUI();
         boolean bool = true;
-	
-        Contact[] contacts = nf.getContacts();
-        Contact[] contactsEvt = e.getParticipants();
-	
-        int a = contacts.length-contactsEvt.length;
+
+        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        ArrayList<Contact> contactsEvt = new ArrayList<Contact>();
+        for(Contact c : nf.getContacts())
+        {
+            if(c.getNom()!=null)
+            {
+                contacts.add(c);
+                System.out.println(c.getNom());
+            }
+        }
+        
+        for(Contact c : e.getParticipants())
+        {
+            if(c.getNom()!=null)
+            {
+                contactsEvt.add(c);
+                System.out.println(c.getNom());
+            }
+        }
+        
+        int a = contacts.size()-contactsEvt.size();
         int b = 0 ;	// temporaire à incrémenter dans la boucle
         
         Contact[] gtmp = new Contact[a];
         
-        if(a>0 && contactsEvt.length!=0)
+        if(a>0 && contactsEvt.size()!=0)
         {
 	        
-	        for(int i = 0; i < contacts.length; i++)
+	        for(Contact i : contacts)
 	        {
 	        	
 		    
 		    
-		    for(int j = 0; j < contactsEvt.length; j++)
+		    for(Contact j : contactsEvt)
 	        	{
-	        		if(contactsEvt[j]==contacts[i])
+	        		if(j==i)
 	        		{
+                                        System.out.println("a");
 	        			bool = false;
 	        		}						
 	        	}
 		    if(bool)
 		    {
-		    	gtmp[b]=contacts[i];
+                        System.out.println("oiu");
+		    	gtmp[b]=i;
 		    	b++;
 		    }
-		    
+		    bool = true;
 	        }
+                
+
 	        
 	        Contact c = boiteDialogUI.afficherChoixMembreContact(fenetre," ", gtmp);
 	        
@@ -242,9 +259,9 @@ public class Controleur {
 	        	e.addParticipant(c);
 	        }
         }
-        else if(contactsEvt.length==0)
+        else if(contactsEvt.size()==0)
         {
-        	System.out.println("a");
+ 
         	for( Contact j : contacts)
         	{       			
         		gtmp[b]=j;
@@ -261,7 +278,7 @@ public class Controleur {
         }
         else
         {
-        	System.out.println("Cette personne appartient déjà tout les groupes");
+        	System.out.println("Cette personne appartient déjà tout les evenements");
         }
     
     
@@ -274,8 +291,12 @@ public class Controleur {
      * Retire un participant d'un événement
      */
     public void retirerParticipantEvenement() {
+      Evenement e = planningUI.getSelectedEvt();
+        BoiteDialogUI boiteDialogUI = new BoiteDialogUI();
+        Contact [] g = e.getParticipants();
+        Contact gr = boiteDialogUI.afficherChoixMembreContact(fenetre," ", g);
+        e.removeParticipant(gr);
     
-       /** Projet **/
            
     }
 

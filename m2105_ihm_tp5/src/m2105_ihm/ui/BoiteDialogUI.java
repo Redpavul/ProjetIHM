@@ -89,7 +89,7 @@ public class BoiteDialogUI {
 		}
 		if (groupes != null) {
 
-			Object selectedValue = JOptionPane.showInputDialog(fenetre, "Dans quel groupe voulez vous ajoutez le contact : ", " ", JOptionPane.QUESTION_MESSAGE, null, nomGroupes, 1);
+			Object selectedValue = JOptionPane.showInputDialog(fenetre, "Quel contact choississez vous ?", " ", JOptionPane.QUESTION_MESSAGE, null, nomGroupes, 1);
 
 			for (int i = 0; i < groupes.length; i++) {
 				if (nomGroupes[i] == selectedValue) {
@@ -106,11 +106,14 @@ public class BoiteDialogUI {
 	public static Contact afficherChoixMembreContact(JFrame fenetre, String titre, Contact[] contacts) {
 		String[] nomContacts = new String[contacts.length];
 
-		Contact res = null;
+		Contact res = null;                
 		for (int i = 0; i < contacts.length; i++)
 		{
 			System.out.println(contacts[i]);
+                        if(contacts[i]!=null)
+                        {
 			nomContacts[i] = contacts[i].getNom();
+                        }
 		}
 
 		if (titre == null) {
@@ -118,7 +121,7 @@ public class BoiteDialogUI {
 		}
 		if (contacts != null) {
 
-			Object selectedValue = JOptionPane.showInputDialog(fenetre, "Quel contact voulez vous ajouter à cet évenement : ", " ", JOptionPane.QUESTION_MESSAGE, null, nomContacts, 1);
+			Object selectedValue = JOptionPane.showInputDialog(fenetre, "Quel contact choississez vous ?", " ", JOptionPane.QUESTION_MESSAGE, null, nomContacts, 1);
 
 			for (int i = 0; i < contacts.length; i++) {
 				if (nomContacts[i] == selectedValue) {

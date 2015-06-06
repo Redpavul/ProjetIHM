@@ -25,7 +25,6 @@ public class ListeEvenement extends javax.swing.JPanel
 	 	private JTree                  listeEvenements;
 	    private JScrollPane            listeDefilante;           
 	    private TreePath               selected;    
-	    private DefaultMutableTreeNode listeRacine;
 	    private DefaultMutableTreeNode listeNoeudEvenement;
 	        
 	    private PlanningUI               planning;
@@ -87,7 +86,7 @@ public class ListeEvenement extends javax.swing.JPanel
 	        /* 
 	         * Ajout de la liste de contact dans une zone défilante 
 	         */
-	        listeEvenements = new JTree(listeRacine);   
+	        listeEvenements = new JTree(listeNoeudEvenement);   
 	        listeEvenements.setCellRenderer(new MyTreeCellRenderer());
 	        
 	        listeEvenements.addTreeSelectionListener(new TreeSelectionListener() {
@@ -136,9 +135,9 @@ public class ListeEvenement extends javax.swing.JPanel
 	     */
 	    private void initListe() {        
 	        /* Noeuds élémentaires de l'arbre de contacts */
-	        listeRacine = new DefaultMutableTreeNode("Evenement");
+	        //listeNoeudEvenement = new DefaultMutableTreeNode("Evenement");
 	        listeNoeudEvenement = new DefaultMutableTreeNode("Evenement");
-	        listeRacine.add(listeNoeudEvenement);       
+	        //listeNoeudEvenement.add(listeNoeudEvenement);       
 	    }
 
 	    /**
@@ -220,7 +219,7 @@ public class ListeEvenement extends javax.swing.JPanel
 	                }
 	                
 	                model = (DefaultTreeModel)listeEvenements.getModel();
-	                model.reload(listeRacine);
+	                model.reload(listeNoeudEvenement);
 	                showAll();
 	                selected = new TreePath(model.getPathToRoot(node));
 	                listeEvenements.setSelectionPath(selected);
@@ -278,7 +277,7 @@ public class ListeEvenement extends javax.swing.JPanel
 	            
 	            /* redraw content */
 	            DefaultTreeModel model = (DefaultTreeModel)listeEvenements.getModel();
-	            model.reload(listeRacine);
+	            model.reload(listeNoeudEvenement);
 	            showAll();            
 	            
 	            success = true;
@@ -311,7 +310,7 @@ public class ListeEvenement extends javax.swing.JPanel
 	            
 	            /* redraw content */
 	            DefaultTreeModel model = (DefaultTreeModel)listeEvenements.getModel();
-	            model.reload(listeRacine);
+	            model.reload(listeNoeudEvenement);
 	            showAll();
 
 	            success = true;
