@@ -82,12 +82,22 @@ public class PlanningUI extends JPanel
     }
     
     
+    public void setEventModified(boolean modified) {
+        Evenement e = listeEvenement.getSelectedEvenement();
+
+        if (modified) {
+            ficheEvtUI.getValues(e);
+            listeEvenement.updateEntry(e);
+        } else {
+            ficheEvtUI.setValues(e);
+        } 
+    }
     public void setSelectedItem(Object item) {
         if (item == null) {} 
 	else {
             if (item instanceof Evenement) {
                 controleur.setEvtSelected(true);
-                //ficheContact.setValues((Contact) item); // affiche les données du contact                                
+                ficheEvtUI.setValues((Evenement) item); // affiche les données du contact                                
             } 
         }
     }

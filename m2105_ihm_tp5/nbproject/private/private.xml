@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/ui/FicheContactUI.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/ui/PlanningUI.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/ui/FicheEvtUI.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/nf/Contact.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/nf/Evenement.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/nf/NoyauFonctionnel.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/ui/CarnetUI.java</file>
+            <file>file:/home/fuhonjud/ProjetIHM/m2105_ihm_tp5/src/m2105_ihm/Controleur.java</file>
+        </group>
     </open-files>
 </project-private>

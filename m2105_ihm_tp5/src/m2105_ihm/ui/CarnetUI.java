@@ -1,23 +1,13 @@
-/*
- * Module 2105 : module IHM : Carnet d'adresse
- */
 package m2105_ihm.ui;
-
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
-
 import m2105_ihm.Controleur;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.GroupeContacts;
 
-/**
- *
- * @author IUT2
- */
 public class CarnetUI extends JPanel {
     
     /*

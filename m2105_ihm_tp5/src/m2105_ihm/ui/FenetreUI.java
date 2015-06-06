@@ -1,12 +1,9 @@
-/*
- * Module 2105 : module IHM : Carnet d'adresse
- */
+
 package m2105_ihm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -15,20 +12,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import m2105_ihm.Controleur;
-        
-/**
- *
- * @author IUT2
- */
+
 public class FenetreUI extends JFrame {
     /*
      * Composants
      */
     private JMenuItem [] menuFichier;
     private JMenuItem [] menuContacts;
-    private JMenuItem [] menuEvenements; // à utiliser pour le mini projet    
+    private JMenuItem [] menuEvenements; 
  
     private JMenuBar barreMenu;
     
@@ -57,18 +49,10 @@ public class FenetreUI extends JFrame {
         JMenu menu2 = initMenuContacts();
         JMenu menu3 = initMenuEvenements();
         JMenuBar barreMenu = new JMenuBar();
-        
-      
-        
-        
         barreMenu.add(menu);
         barreMenu.add(menu2);
         barreMenu.add(menu3);
-        
         this.setJMenuBar(barreMenu);
-        
-
-        /* TP 3 : à compléter */     
     }
 
     /**

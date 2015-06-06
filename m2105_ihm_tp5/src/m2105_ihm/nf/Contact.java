@@ -156,17 +156,8 @@ public class Contact implements java.io.Serializable {
         return res;
     }
 
-    /**
-     * Retourne la région du contact
-     * @return 
-     */
     public Region getRegion() { return region; }
 
-    /**
-     * Affecte la région du contact
-     * @param objet non nul
-     * @return 
-     */
     public boolean setRegion(Region region) {       
         boolean res = false;
         
@@ -178,17 +169,8 @@ public class Contact implements java.io.Serializable {
         return res;
     }
     
-    /**
-     * Retourne la disponibilité pour des sorties
-     * @return 
-     */
     public DispoSortie getDisponibilite() { return disponibilite; }
 
-    /**
-     * Affecte la disponibilité pour des sorties
-     * @param objet non nul
-     * @return 
-     */
     public boolean setDisponibilite(DispoSortie disponibilite) {       
         boolean res = false;
         
@@ -200,19 +182,10 @@ public class Contact implements java.io.Serializable {
         return res;
     }
 
-    /**
-     * Retourne la liste des hobby
-     * @return tableau contenant la liste des hobby
-     */
     public Hobby [] getHobbies() { 
         return hobbies.toArray(new Hobby[0]); 
     }
-    
-    /**
-     * Ajoute un Hobby dans la liste
-     * @param h un hobby
-     * @return True si le hobby n'est pas encore dans la liste
-     */
+
     public boolean addHobby(Hobby h) {
         boolean res = false;
         
@@ -225,12 +198,7 @@ public class Contact implements java.io.Serializable {
         
         return res;        
     }
-    
-    /**
-     * Retire un hobby de la liste
-     * @param h un hobby
-     * @return True si le hobby est dans la liste
-     */
+
     public boolean removeHobby(Hobby h) {
         boolean res = false;
         
@@ -246,42 +214,8 @@ public class Contact implements java.io.Serializable {
         return res;        
     }    
         
-    /**
-     * Représentation textuelle d'un contact
-     * @return chaîne de caractère contenant le nom et prénom du contact
-     */
     public String toString() {
         return nom + " " + prenom;
     }
-    
-    /**
-     * Initialise un contact à partir d'un contact existant
-     * @param c un contact
-     * @return true si ok
-     */
-//    public boolean set(Contact c) {        
-//        boolean res = true;
-//        
-//        if (c == null) { return false; }
-//        
-//        res &= setNom(c.getNom());
-//        res &= setPrenom(c.getPrenom());
-//        
-//        int  jour = c.getDateNaissanceJour();
-//        Mois mois = c.getDateNaissanceMois();
-//        int annee = c.getDateNaissanceAnnee();        
-//        res &= setDateNaissance(jour, mois, annee);
-//        
-//        res &= setNumeroTelephone(c.getNumeroTelephone());
-//        res &= setEmail(c.getEmail());
-//        res &= setRegion(c.getRegion());
-//        res &= setDisponibilite(c.getDisponibilite());
-//        
-//        hobbies.clear();
-//        for(Hobby h : c.getHobbies()) {
-//            res &= addHobby(h);
-//        }
-//        
-//        return res;
-//    }
+   
 }
