@@ -64,6 +64,12 @@ public class FicheEvtUI extends javax.swing.JPanel {
         this.add(new JLabel("/"));
         champan = new JTextField(5);
         this.add(champan);
+        String[] colonnes = {"Nom", "Prenom", "telephone"};
+        model = new DefaultTableModel();
+        model.setColumnIdentifiers(colonnes);
+        nomsTable = new JTable(model);
+        this.add(nomsTable.getTableHeader());
+        this.add(nomsTable);
         this.add(annuler);
         this.add(valider);
     }
@@ -97,11 +103,26 @@ public class FicheEvtUI extends javax.swing.JPanel {
         if (event == null) {
             return false;
         }
-        if (event == null) { return false; }
-		champNom.setText(event.getIntitule());
-		champjour.setText(""+event.getDateJour());
-		listmois.setSelectedItem(event.getDateMois());
-		champan.setText(""+event.getDateAnnee());		
+        if (event == null) {
+            return false;
+        }
+        champNom.setText(event.getIntitule());
+        champjour.setText("" + event.getDateJour());
+        listmois.setSelectedItem(event.getDateMois());
+        champan.setText("" + event.getDateAnnee());
+
+        String[] obj = new String[3];
+        for( int i=0 ; i<model.getRowCount();i++)
+		{
+			model.removeRow(i);
+		}
+        for (Contact tmp : event.getParticipants()) {
+            obj[0] = tmp.getNom();
+            obj[1] = tmp.getPrenom();
+            obj[2] = tmp.getNumeroTelephone();
+            model.addRow(obj);
+
+        }
         return true;
     }
 
@@ -112,14 +133,16 @@ public class FicheEvtUI extends javax.swing.JPanel {
      * @return
      */
     public boolean getValues(Evenement event) {
-        if (event == null) {return false;}
+        if (event == null) {
+            return false;
+        }
 
-            event.setIntitule(champNom.getText());
-            int jour = Integer.parseInt(champjour.getText());
-            Mois moiss = (Mois) listmois.getSelectedItem();
-            int annee = Integer.parseInt(champan.getText());
-            event.setDate(jour, moiss, annee);
-            return true;
+        event.setIntitule(champNom.getText());
+        int jour = Integer.parseInt(champjour.getText());
+        Mois moiss = (Mois) listmois.getSelectedItem();
+        int annee = Integer.parseInt(champan.getText());
+        event.setDate(jour, moiss, annee);
+        return true;
 
     }
 }

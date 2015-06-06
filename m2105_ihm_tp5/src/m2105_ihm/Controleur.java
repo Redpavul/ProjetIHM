@@ -207,7 +207,6 @@ public class Controleur {
             if(c.getNom()!=null)
             {
                 contacts.add(c);
-                System.out.println(c.getNom());
             }
         }
         
@@ -216,7 +215,6 @@ public class Controleur {
             if(c.getNom()!=null)
             {
                 contactsEvt.add(c);
-                System.out.println(c.getNom());
             }
         }
         
@@ -237,13 +235,11 @@ public class Controleur {
 	        	{
 	        		if(j==i)
 	        		{
-                                        System.out.println("a");
 	        			bool = false;
 	        		}						
 	        	}
 		    if(bool)
 		    {
-                        System.out.println("oiu");
 		    	gtmp[b]=i;
 		    	b++;
 		    }
@@ -275,13 +271,7 @@ public class Controleur {
 	        {
 	        	e.addParticipant(c);
 	        }
-        }
-        else
-        {
-        	System.out.println("Cette personne appartient déjà tout les evenements");
-        }
-    
-    
+        }    
     }
     
            

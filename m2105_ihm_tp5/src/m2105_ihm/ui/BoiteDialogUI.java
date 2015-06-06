@@ -109,7 +109,6 @@ public class BoiteDialogUI {
 		Contact res = null;                
 		for (int i = 0; i < contacts.length; i++)
 		{
-			System.out.println(contacts[i]);
                         if(contacts[i]!=null)
                         {
 			nomContacts[i] = contacts[i].getNom();

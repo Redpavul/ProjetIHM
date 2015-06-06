@@ -109,7 +109,7 @@ public class FicheGroupeUI extends javax.swing.JPanel
 		indice[i] = groupe.getSymboles()[i].ordinal();
 	    }
 	    symbList.setSelectedIndices(indice);
-            
+             this.zoneDessin.setPoints(groupe.getPoints());
             return true;
         }
     }
@@ -128,11 +128,8 @@ public class FicheGroupeUI extends javax.swing.JPanel
 	{
 		    groupe.addSymbole((Symbole)o);
 	}
-        /*
-         * Ne pas s'occuper des membres du groupe car traité via des
-         * commandes du menu qui appelera setValues
-         */
         
+        groupe.setPoints(this.zoneDessin.getPoints());
         return true;
     }
     
