@@ -3,12 +3,15 @@
  */
 package m2105_ihm.ui;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +24,7 @@ import m2105_ihm.nf.Evenement;
  *
  * @author IUT2
  */
-public class FicheEvtUI extends javax.swing.JPanel {
+public class FicheEvtUI extends JPanel {
 
     /*
      * Attributs
@@ -35,6 +38,8 @@ public class FicheEvtUI extends javax.swing.JPanel {
     JTable nomsTable;
     JList symbList;
     DefaultTableModel model;
+    private JPanel description = new JPanel();
+    private JPanel participants = new JPanel();
 
     /**
      * Creates new form CarnetUI
@@ -51,27 +56,37 @@ public class FicheEvtUI extends javax.swing.JPanel {
      */
     private void initUIComponents() {
         //this.add(new JLabel("Piou"));
-        this.add(new JLabel("Nom de l'évenement : "));
+        
+        description.setBorder(BorderFactory.createTitledBorder("Descriptif"));
+        participants.setBorder(BorderFactory.createTitledBorder("Participants"));
+        this.add(description);
+        this.add(participants);
+        description.add(new JLabel("Nom de l'événement : "));
         champNom = new JTextField(13);
-        this.add(champNom);
-        this.add(new JLabel("Date de naissance : "));
+        description.add(champNom);
+        description.add(new JLabel("Date de l'événement : "));
         champjour = new JTextField(5);
-        this.add(champjour);
-        this.add(new JLabel("/"));
+        description.add(champjour);
+        description.add(new JLabel("/"));
         Mois[] mois = Mois.values();
         listmois = new JComboBox(mois);
-        this.add(listmois);
-        this.add(new JLabel("/"));
+        description.add(listmois);
+        description.add(new JLabel("/"));
         champan = new JTextField(5);
-        this.add(champan);
+        description.add(champan);
         String[] colonnes = {"Nom", "Prenom", "telephone"};
         model = new DefaultTableModel();
         model.setColumnIdentifiers(colonnes);
         nomsTable = new JTable(model);
-        this.add(nomsTable.getTableHeader());
-        this.add(nomsTable);
+        participants.add(nomsTable.getTableHeader());
+        participants.add(nomsTable);
         this.add(annuler);
         this.add(valider);
+        
+        add(description,BorderLayout.NORTH);
+        add(participants, BorderLayout.EAST);
+        add(annuler,BorderLayout.SOUTH);
+        add(valider,BorderLayout.SOUTH);
     }
 
     /**
