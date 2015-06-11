@@ -6,6 +6,7 @@ package m2105_ihm.ui;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -38,7 +39,16 @@ public class FicheEvtUI extends JPanel {
     DefaultTableModel model;
     private JPanel description = new JPanel();
     private JPanel participants = new JPanel();
-    private GridBagConstraints contrainte;
+    
+        
+    private JPanel nom = new JPanel();
+    private JPanel date= new JPanel();
+    private JPanel bouton= new JPanel();
+    
+    
+    private GridLayout grilleinfos;
+    private GridLayout grillePrincipale;
+    private GridLayout grilleParticipants;
 
     /**
      * Creates new form CarnetUI
@@ -56,45 +66,47 @@ public class FicheEvtUI extends JPanel {
     private void initUIComponents() {
         //this.add(new JLabel("Piou"));
         
-	
-	contrainte = new GridBagConstraints();
-	this.setLayout(new GridBagLayout());
-	
+	grilleinfos = new GridLayout(3,1);
+	grillePrincipale = new GridLayout(2,1);
+	grilleParticipants = new GridLayout(2,1);
+
+	this.setLayout(grillePrincipale);
         description.setBorder(BorderFactory.createTitledBorder("Descriptif"));
         participants.setBorder(BorderFactory.createTitledBorder("Participants"));
-	
-	description.setLayout(new GridBagLayout());
-	contrainte.gridx=1;
-	contrainte.gridy=2;
-	contrainte.anchor = GridBagConstraints.NORTH;
-        this.add(description,contrainte);
-	contrainte.gridx=2;
-	contrainte.gridy=3;
-	contrainte.anchor = GridBagConstraints.CENTER;
+	description.setLayout(grilleinfos);
+	participants.setLayout(grilleParticipants);
+        this.add(description);
         this.add(participants);
-	contrainte.gridx=1;
-	contrainte.gridy=2;
-        description.add(new JLabel("Nom de l'événement : "),contrainte);
+	
+        nom.add(new JLabel("Nom de l'événement : "));
         champNom = new JTextField(13);
-        description.add(champNom);
-        description.add(new JLabel("Date de l'événement : "));
+        nom.add(champNom);
+        date.add(new JLabel("Date de l'événement : "));
         champjour = new JTextField(5);
-        description.add(champjour);
-        description.add(new JLabel("/"));
+        date.add(champjour);
+        date.add(new JLabel("/"));
         Mois[] mois = Mois.values();
         listmois = new JComboBox(mois);
-        description.add(listmois);
-        description.add(new JLabel("/"));
+        date.add(listmois);
+        date.add(new JLabel("/"));
         champan = new JTextField(5);
-        description.add(champan);
+        date.add(champan);
         String[] colonnes = {"Nom", "Prenom", "telephone"};
         model = new DefaultTableModel();
         model.setColumnIdentifiers(colonnes);
         nomsTable = new JTable(model);
         participants.add(nomsTable.getTableHeader());
         participants.add(nomsTable);
-        description.add(annuler);
-        description.add(valider);
+        bouton.add(annuler);
+        bouton.add(valider);
+	
+	
+	
+		
+	description.add(nom);
+	description.add(date);
+	description.add(bouton);
+	
         add(description);
         add(participants);
     }
@@ -137,10 +149,9 @@ public class FicheEvtUI extends JPanel {
         champan.setText("" + event.getDateAnnee());
 
         String[] obj = new String[3];
-        for( int i=0 ; i<model.getRowCount();i++)
-		{
-			model.removeRow(i);
-		}
+
+	model.setRowCount(0);
+	
         for (Contact tmp : event.getParticipants()) {
             obj[0] = tmp.getNom();
             obj[1] = tmp.getPrenom();

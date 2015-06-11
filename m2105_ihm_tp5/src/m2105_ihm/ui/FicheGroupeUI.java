@@ -1,5 +1,6 @@
 package m2105_ihm.ui;
 
+import java.awt.GridLayout;
 import java.awt.List;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -7,10 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +35,30 @@ public class FicheGroupeUI extends javax.swing.JPanel
     private JButton valider = new JButton("valider");
     private JButton annuler = new JButton("annuler");
     
+    private JPanel noms = new JPanel();
+    private JPanel logo = new JPanel();
+    private JPanel participants = new JPanel();
+    private JPanel confirmation = new JPanel();
+    
+    private JPanel nom = new JPanel();
+    private JPanel sym = new JPanel();
+    
+    private JPanel eff = new JPanel();
+    private JPanel log = new JPanel();
+    
+    private JPanel val = new JPanel();
+    private JPanel ann = new JPanel();
+    
+    
+    
+    private GridLayout grillePrincipale;
+    private GridLayout grilleInfos;
+    private GridLayout grilleLogo;
+    private GridLayout grilleConfirmation;
+    
+
+    
+    
     public FicheGroupeUI(CarnetUI carnet)
     { 
         super();
@@ -46,37 +73,68 @@ public class FicheGroupeUI extends javax.swing.JPanel
     private void initUIComponents()
     {        
         //Boutons
-	this.add(new javax.swing.JButton("Hello !"));
-	this.add(annuler);
-	this.add(valider);
+	
+	grillePrincipale = new GridLayout(2,2);
+	grilleInfos = new GridLayout(2,1);
+	grilleLogo = new GridLayout(2,1);
+	grilleConfirmation = new GridLayout(2,1);
+	
+	this.setLayout(grillePrincipale);
+	
+	
+	noms.setBorder(BorderFactory.createTitledBorder("Descriptifs"));
+	logo.setBorder(BorderFactory.createTitledBorder("Logo"));
+	participants.setBorder(BorderFactory.createTitledBorder("Participants"));
+	confirmation.setBorder(BorderFactory.createTitledBorder("Confirmation"));
+	
+	
+	
         
-        
+        noms.setLayout(grilleInfos);
+	logo.setLayout(grilleLogo);
+	confirmation.setLayout(grilleConfirmation);
+	
+	ann.add(annuler);
+	val.add(valider);
+	
+	confirmation.add(val);
+	confirmation.add(ann);
+
 	
 	//champs texte
-	this.add(new javax.swing.JLabel("Fiche groupe"));
-	this.add(new JLabel("Nom :"));
+	nom.add(new JLabel("Nom :"));
 	groupeName = new JTextField(13);
-        this.add(groupeName);
-	
+        nom.add(groupeName);
+	noms.add(nom);
 	//tableau infos contacts
 	String [] colonnes = {"Nom", "Prenom", "telephone"};
 	model = new DefaultTableModel();
 	model.setColumnIdentifiers(colonnes);
 	nomsTable = new JTable(model);
-	this.add(nomsTable.getTableHeader());
-	this.add(nomsTable);
+	participants.add(nomsTable.getTableHeader());
+	participants.add(nomsTable);
 	
-        this.add(new JLabel("Symboles du groupe : "));
+        sym.add(new JLabel("Symboles du groupe : "));
 	
         symbList = new JList(Symbole.values());
-        this.add(symbList);
+        sym.add(symbList);
 	
-	
+	noms.add(sym);
 	
 	//Zone dessin
         zoneDessin = new ZoneDessinUI();
-        this.add(zoneDessin);
-        this.add(effacer);
+	log.add(zoneDessin);
+	eff.add(effacer);
+	
+        logo.add(log);
+        logo.add(eff);
+	
+	
+	
+	this.add(noms);
+	this.add(logo);
+	this.add(participants);
+	this.add(confirmation);
     }
 
     public boolean setValues(GroupeContacts groupe)
@@ -85,10 +143,8 @@ public class FicheGroupeUI extends javax.swing.JPanel
 	    return false;
 	else
 	{
-		for( int i=0 ; i<model.getRowCount();i++)
-		{
-			model.removeRow(i);
-		}
+
+	    model.setRowCount(0);
 	    groupeName.setText(groupe.getNom());
 	    
 	    //Tableau noms
@@ -109,7 +165,8 @@ public class FicheGroupeUI extends javax.swing.JPanel
 		indice[i] = groupe.getSymboles()[i].ordinal();
 	    }
 	    symbList.setSelectedIndices(indice);
-             this.zoneDessin.setPoints(groupe.getPoints());
+	    zoneDessin.effacer();
+            this.zoneDessin.setPoints(groupe.getPoints());
             return true;
         }
     }
