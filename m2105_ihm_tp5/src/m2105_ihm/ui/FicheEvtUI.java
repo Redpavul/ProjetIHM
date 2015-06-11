@@ -4,6 +4,8 @@
 package m2105_ihm.ui;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -20,10 +22,6 @@ import m2105_ihm.nf.Mois;
 import m2105_ihm.nf.Contact;
 import m2105_ihm.nf.Evenement;
 
-/**
- *
- * @author IUT2
- */
 public class FicheEvtUI extends JPanel {
 
     /*
@@ -40,6 +38,7 @@ public class FicheEvtUI extends JPanel {
     DefaultTableModel model;
     private JPanel description = new JPanel();
     private JPanel participants = new JPanel();
+    private GridBagConstraints contrainte;
 
     /**
      * Creates new form CarnetUI
@@ -57,11 +56,25 @@ public class FicheEvtUI extends JPanel {
     private void initUIComponents() {
         //this.add(new JLabel("Piou"));
         
+	
+	contrainte = new GridBagConstraints();
+	this.setLayout(new GridBagLayout());
+	
         description.setBorder(BorderFactory.createTitledBorder("Descriptif"));
         participants.setBorder(BorderFactory.createTitledBorder("Participants"));
-        this.add(description);
+	
+	description.setLayout(new GridBagLayout());
+	contrainte.gridx=1;
+	contrainte.gridy=2;
+	contrainte.anchor = GridBagConstraints.NORTH;
+        this.add(description,contrainte);
+	contrainte.gridx=2;
+	contrainte.gridy=3;
+	contrainte.anchor = GridBagConstraints.CENTER;
         this.add(participants);
-        description.add(new JLabel("Nom de l'événement : "));
+	contrainte.gridx=1;
+	contrainte.gridy=2;
+        description.add(new JLabel("Nom de l'événement : "),contrainte);
         champNom = new JTextField(13);
         description.add(champNom);
         description.add(new JLabel("Date de l'événement : "));
@@ -80,13 +93,10 @@ public class FicheEvtUI extends JPanel {
         nomsTable = new JTable(model);
         participants.add(nomsTable.getTableHeader());
         participants.add(nomsTable);
-        this.add(annuler);
-        this.add(valider);
-        
-        add(description,BorderLayout.NORTH);
-        add(participants, BorderLayout.EAST);
-        add(annuler,BorderLayout.SOUTH);
-        add(valider,BorderLayout.SOUTH);
+        description.add(annuler);
+        description.add(valider);
+        add(description);
+        add(participants);
     }
 
     /**
