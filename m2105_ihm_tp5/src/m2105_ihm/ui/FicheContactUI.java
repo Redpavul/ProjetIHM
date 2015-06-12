@@ -123,8 +123,9 @@ public class FicheContactUI extends JPanel {
 	region.add(new JLabel("                 Région : "));
 	region.add(regi);
 
-	validation.add(valider);
 	validation.add(annuler);
+	validation.add(valider);
+
 
 	
 	coordonnees.add(telmail);
